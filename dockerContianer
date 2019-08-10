@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker exec -it intuit-app bash -c "sudo -u devuser /bin/bash"
