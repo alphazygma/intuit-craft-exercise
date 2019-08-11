@@ -1,5 +1,5 @@
 <?php
-namespace Project;
+namespace Intuit\Project;
 
 use App\Project;
 

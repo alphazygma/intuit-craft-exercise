@@ -12,4 +12,5 @@ npm-debug.log
 yarn-error.log
 
 run/var
+local-dev
 .idea

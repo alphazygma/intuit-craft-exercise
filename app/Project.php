@@ -4,6 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Project
+ *
+ * @property string title
+ * @property string description
+ * @property int seller_id
+ * @property int status
+ * @property int deadline_at
+ * @property int lowest_bid_id
+ *
+ * @package App
+ */
 class Project extends Model
 {
     protected $table = 'project';
@@ -18,7 +30,8 @@ class Project extends Model
     ];
 
     protected $casts = [
-        'deadline_at' => 'datetime',
+        'deadline_at' => 'timestamp',
+        'created_at'  => 'timestamp',
     ];
 
     protected $hidden = [

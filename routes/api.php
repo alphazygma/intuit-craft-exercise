@@ -37,7 +37,7 @@ Route::post('projects',            'ProjectController@store');
 Route::get('sellers/{seller}/projects',           'SellerProjectController@index'); // TBI
 Route::get('sellers/{seller}/projects/{project}', 'SellerProjectController@show');  // TBI
 
-Route::get('project/{project}/bids',  'ProjectBidController@index');
-Route::post('project/{project}/bids', 'ProjectBidController@store');
+Route::get('projects/{project}/bids',  'ProjectBidController@index');
+Route::post('projects/{project}/bids', 'ProjectBidController@store');
 
 

@@ -1,5 +1,5 @@
 <?php
-namespace Project;
+namespace Intuit\Project;
 
 final class ProjectStatus
 {

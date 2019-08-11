@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Intuit\Http\Response\Exception\ResponseException;
 
 class Handler extends ExceptionHandler
 {
@@ -53,6 +54,13 @@ class Handler extends ExceptionHandler
                 404
             );
         }
+        if ($exception instanceof ResponseException) {
+            return response()->json(
+                ['error' => $exception->getMessage()],
+                $exception->getStatus()
+            );
+        }
+
         return parent::render($request, $exception);
     }
 }

@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Project;
 
 use Illuminate\Http\Request;
-use Project\ProjectManager;
+use Intuit\Http\Response\Exception\InvalidInputException;
+use Intuit\Project\ProjectManager;
 
 class ProjectController extends Controller
 {
@@ -48,7 +49,7 @@ class ProjectController extends Controller
         // Pull Seller ID from Authentication to make sure the project can be created
 
         if (!$this->isNewProjectValid($request)) {
-            return response()->json(['error' => 'Invalid input'], 400);
+            throw new InvalidInputException();
         }
 
         return Project::create($request->all());

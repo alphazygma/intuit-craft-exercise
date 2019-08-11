@@ -37,6 +37,10 @@ require __DIR__.'/../vendor/autoload.php';
 
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
+if (file_exists(__DIR__ . '/../local-dev/bootstrap.php')) {
+    require_once __DIR__ . '/../local-dev/bootstrap.php';
+}
+
 /*
 |--------------------------------------------------------------------------
 | Run The Application
