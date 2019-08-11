@@ -58,6 +58,7 @@ class DemoSeeder extends Seeder
 
 
         foreach ($projectList as $project) {
+            $project['deadline_at'] = date('Y-m-d H:i:s', $project['deadline_at']);
             \App\Project::create($project);
         }
         foreach ($bidList as $bid) {
