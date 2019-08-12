@@ -18,11 +18,6 @@ RUN apt-get install -y \
     libfreetype6-dev \
     g++
 
-#RUN docker-php-ext-install opcache
-
-#COPY docker/php/conf.d/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
-#COPY . /var/www/html
-
 # 2. apache configs + document root
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
@@ -43,7 +38,11 @@ RUN docker-php-ext-install \
     calendar \
     mbstring \
     pdo_mysql \
+#   opcache \
     zip
+
+#COPY docker/php/conf.d/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+#COPY . /var/www/html
 
 # 5. composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer

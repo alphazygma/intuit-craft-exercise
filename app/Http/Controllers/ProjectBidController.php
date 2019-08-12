@@ -20,10 +20,48 @@ class ProjectBidController extends Controller
         $this->projectBidManager = $projectBidManager;
     }
 
+    /**
+     * @OA\Get(
+     *      path="/project/{project_id}/bids",
+     *      operationId="show",
+     *      tags={"Bids"},
+     *      summary="Get all Project's bids",
+     *      description="Returns all bids from a given project",
+     *      @OA\Parameter(
+     *          name="project_id",
+     *          @OA\Schema(type="integer"), required=true, in="path",
+     *          description="Project id",
+     *      ),
+     *      @OA\Response(response=200, description="successful operation"),
+     *      @OA\Response(response=404, description="Resource Not Found"),
+     * )
+     *
+     * @param int $projectId
+     * @return mixed
+     */
     public function index(int $projectId) {
         return Bid::where('project_id', $projectId)->get();
     }
 
+    /**
+     * @OA\Post(
+     *      path="/project/{project_id}/bids",
+     *      operationId="store",
+     *      tags={"Bids"},
+     *      summary="Adds a bid on an existing project",
+     *      description="Adds a bid to an existing project if valid and updates the project appropriately",
+     *      @OA\Parameter(
+     *          name="project_id",
+     *          @OA\Schema(type="integer"), required=true, in="path",
+     *          description="Project id",
+     *      ),
+     *      @OA\Response(response=200, description="successful operation"),
+     *      @OA\Response(response=404, description="Resource Not Found|Invalid Input|Project is expired"),
+     * )
+     *
+     * @param int $projectId
+     * @return mixed
+     */
     public function store(Request $request, Project $project) {
         $this->validateBid($request, $project);
 

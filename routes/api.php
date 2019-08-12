@@ -19,15 +19,13 @@ use Illuminate\Http\Request;
 
 Route::get('users/{user}', 'UserController@show');
 Route::post('users',       'UserController@store');
-Route::put('users/{user}', 'UserController@update');
+Route::patch('users/{user}', 'UserController@update');
 
 Route::get('sellers/{user}', 'SellerController@show');   // TBI
 Route::post('sellers',       'SellerController@store');  // TBI
-Route::put('sellers/{user}', 'SellerController@update'); // TBI
 
 Route::get('buyers/{user}', 'BuyerController@show');   // TBI
 Route::post('buyers',       'BuyerController@store');  // TBI
-Route::put('buyers/{user}', 'BuyerController@update'); // TBI
 
 Route::get('projects',             'ProjectController@index');
 Route::get('projects/page/{page}', 'ProjectController@page');
