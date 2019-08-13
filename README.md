@@ -29,13 +29,13 @@ Once containers are up, run the following command to install composer libraries
 
 Initialize Swagger API tool
 ```
-vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider"
+./dockerArtisan vendor:publish --provider "L5Swagger\L5SwaggerServiceProvider"
 ```
 
 Generate documents and check them
 ```
-./dockerArtisan artisan l5-swagger:generate
-http://localhost:9000
+./dockerArtisan l5-swagger:generate
+http://localhost:8005
 ```
 
 ## Running test

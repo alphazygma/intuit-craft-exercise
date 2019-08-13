@@ -36,17 +36,15 @@ services:
         aliases:
           - db
 
-  swagger_ui:
+  swagger-ui:
     image: "swaggerapi/swagger-ui"
     container_name: swagger-ui
     volumes:
-      - ./storage/api-docs/api-docs.json:/swagger.json
-    restart: always
+      - ./storage/api-docs:/foo
     ports:
-      - 9000:8080
+      - 8005:8080
     environment:
-      - SWAGGER_JSON=/swagger.json
-      - BASE_URL=http://localhost:8000/api
+      - SWAGGER_JSON=/foo/api-docs.json
 
 networks:
   backend:
