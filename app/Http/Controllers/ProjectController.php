@@ -7,6 +7,7 @@ use App\Project;
 use Illuminate\Http\Request;
 use Intuit\Http\Response\Exception\InvalidInputException;
 use Intuit\Project\ProjectManager;
+use Intuit\Storage\Project\ProjectRepository;
 
 class ProjectController extends Controller
 {
@@ -16,9 +17,12 @@ class ProjectController extends Controller
 
     /** @var ProjectManager  */
     protected $projectManager;
+    /** @var ProjectRepository */
+    protected $projectRepo;
 
-    public function __construct(ProjectManager $projectManager) {
+    public function __construct(ProjectManager $projectManager, ProjectRepository $projectRepo) {
         $this->projectManager = $projectManager;
+        $this->projectRepo = $projectRepo;
     }
 
     /**
@@ -118,7 +122,7 @@ class ProjectController extends Controller
             throw new InvalidInputException();
         }
 
-        return Project::create($request->all());
+        return $this->projectRepo->create($request->all());
     }
 
     private function isNewProjectValid(Request $request) {

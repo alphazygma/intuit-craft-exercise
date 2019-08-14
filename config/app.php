@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+         App\Providers\StorageServiceProvider::class,
 
         /*
          * Application Service Providers...

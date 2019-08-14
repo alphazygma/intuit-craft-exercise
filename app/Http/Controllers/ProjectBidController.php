@@ -59,8 +59,9 @@ class ProjectBidController extends Controller
      *      @OA\Response(response=404, description="Resource Not Found|Invalid Input|Project is expired"),
      * )
      *
-     * @param int $projectId
-     * @return mixed
+     * @param Request $request
+     * @param Project $project
+     * @return Bid
      */
     public function store(Request $request, Project $project) {
         $this->validateBid($request, $project);
